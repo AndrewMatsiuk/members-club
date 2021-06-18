@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <title>Members Club!</title>
+        <style>
+            .container {
+                display: inline-block;
+            }
+
+            .text {
+                text-align: center;
+            }
+
+            .text1 {
+                text-indent: 20px;
+            }
+
+            .text3 {
+                text-indent: 65px;
+            }
+
+            .clear {
+                float: right;
+            }
+
+            .center {
+                margin: 0 auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="text"><h1>Welcome to the Club!</h1></div>
+        <div class="container">
+            <form class="form" action="/add" method="POST">
+                <div class="text1"> <h3>New member</h3>
+                    <div>
+                        <label for="name">Name:</label>
+                        <input name="name" id="name" placeholder="Name">
+                    </div>
+                    <div>
+                        <label for="email">Email:</label>
+                        <input type="text" id="email" name="email" placeholder="Email">
+                    </div>
+                    <div class="text3">
+                        <button type="submit">Add</button>
+                        <button type="reset" class="clear">Clear</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="text"><h2>Members</h2></div>
+        <div>
+            <table border="1" width="75%" cellpadding="5" class="center">
+                <tr>
+                    <td>#</td>
+                    <td>Name Surname</td>
+                    <td>Email</td>
+                    <td>Registration date</td>
+                </tr>
+                {{range $member := .Members}}
+                <tr>
+                    <td>{{ $member.ID }}</td>
+                    <td>{{ $member.Name }}</td>
+                    <td>{{ $member.Email }}</td>
+                    <td>{{ $member.RegistrationDate }}</td>
+                </tr>
+                {{end}}
+            </table>
+        </div>
+    </body>
+</html>
